@@ -3,11 +3,11 @@ import fetch from "node-fetch";
 export default async function handler(req, res) {
   const { apikey, url } = req.query;
 
-  // API key check
   if (!apikey) {
     return res.status(400).json({
       status: false,
-      message: "API key is required"
+      message: "API key is required",
+      creator: "MR RABBIT"
     });
   }
 
@@ -15,15 +15,16 @@ export default async function handler(req, res) {
   if (!validKeys.includes(apikey)) {
     return res.status(403).json({
       status: false,
-      message: "Invalid API key"
+      message: "Invalid API key",
+      creator: "MR RABBIT"
     });
   }
 
-  // Instagram URL check
   if (!url) {
     return res.status(400).json({
       status: false,
-      message: "xnxx URL is required"
+      message: "xnxx URL is required",
+      creator: "MR RABBIT"
     });
   }
 
@@ -33,18 +34,19 @@ export default async function handler(req, res) {
     const apiUrl =
       `https://apis.davidcyril.name.ng/download/xnxx?url=${encodeURIComponent(url)}&apikey=`;
 
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const r = await fetch(apiUrl);
+    const data = await r.json();
 
-    // Only change creator name
-    if (data.status) data.creator = "MR RABBIT";
+    // 🔥 ALWAYS override creator
+    data.creator = "MR RABBIT";
 
     return res.json(data);
 
-  } catch (err) {
+  } catch (e) {
     return res.status(500).json({
       status: false,
-      message: "Internal server error"
+      message: "Internal server error",
+      creator: "MR RABBIT"
     });
   }
 }
