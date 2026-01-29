@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     const ORIGINAL_API_KEY = "YOUR_DAVID_CYRIL_API_KEY";
 
     const apiUrl =
-      `https://apis.davidcyril.name.ng/zxvideo?url=${encodeURIComponent(url)}&apikey=`;
+      `https://apis.davidcyril.name.ng/xvideo?url=${encodeURIComponent(url)}&apikey=`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();
