@@ -2,7 +2,6 @@ import fetch from "node-fetch";
 
 export default async function handler(req, res) {
   try {
-
     const { apikey, song } = req.query;
 
     /* ===== API KEY CHECK ===== */
@@ -39,7 +38,7 @@ export default async function handler(req, res) {
       });
     }
 
-    /* ===== FETCH LYRICS (Original API) ===== */
+    /* ===== FETCH ORIGINAL LYRICS API ===== */
 
     const apiUrl =
       `https://apis.davidcyril.name.ng/lyrics3?song=${encodeURIComponent(song)}`;
@@ -49,14 +48,16 @@ export default async function handler(req, res) {
 
     /* ===== FINAL RESPONSE ===== */
 
-    return res.json({
+    return res.status(200).json({
       creator: "MR RABBIT",
-      apikey,                // 🔥 client key auto show
+      apikey, // 🔥 User যে key ব্যবহার করবে সেটাই show করবে
       status: data.success || false,
       result: data.result || null
     });
 
   } catch (error) {
+    console.error(error);
+
     return res.status(500).json({
       status: false,
       creator: "MR RABBIT",
