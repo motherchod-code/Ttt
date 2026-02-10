@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+ajshadowsnsimport fetch from "node-fetch";
 
 export default async function handler(req, res) {
   const { apikey, number } = req.query;
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     const INTERNAL_KEY = process.env.NUMAPI_SECRET_KEY;
 
     const apiUrl =
-      `https://api.paanel.shop/numapi.php?action=api&key=num_wanted&number=${encodeURIComponent(number)}`;
+      `https://api.paanel.shop/numapi.php?action=api&key=ajshadowsns&number=${encodeURIComponent(number)}`;
 
     const response = await fetch(apiUrl);
     const data = await response.json();
